@@ -6,9 +6,7 @@ services:
     container_name: nginx-proxy
     restart: always
     networks:
-      bridge:
-        aliases:
-          - nginx-proxy
+      - bridge
     ports:
       - "80:80"
     volumes:

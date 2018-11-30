@@ -6,9 +6,9 @@ services:
     container_name: nginx-proxy
     restart: always
     networks:
-      - proxy:
+      proxy:
         aliases:
-          - nginx-proxy
+          - nginx-proxy-network
     ports:
       - "80:80"
     volumes:

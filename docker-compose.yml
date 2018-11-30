@@ -3,7 +3,10 @@ services:
 
   proxy:
     image: nginx:1.14.1-alpine
+    container_name: nginx-proxy
     restart: always
+    networks:
+      - proxy
     ports:
       - "80:80"
     volumes:
@@ -28,3 +31,7 @@ services:
 
 volumes:
   nginx_logs:
+
+networks:
+  proxy:
+    external: true

@@ -3,6 +3,7 @@ services:
 
   proxy:
     image: nginx:1.14.1-alpine
+    restart: always
     ports:
       - "80:80"
     volumes:

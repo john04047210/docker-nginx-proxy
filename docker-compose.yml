@@ -1,6 +1,6 @@
 version: "3.2"
-services:
 
+services:
   proxy:
     image: nginx:1.14.1-alpine
     container_name: nginx-proxy
@@ -11,7 +11,20 @@ services:
           - nginx-proxy-network
     ports:
       - "80:80"
+      - "443:443"
     volumes:
+      - type: bind
+        source: /data/cert/dh-param/dhparam-2048.pem
+        target: /etc/ssl/certs/dhparam-2048.pem
+        read_only: true
+        volume:
+          nocopy: true
+      - type: bind
+        source: /data/cert/letsencrypt/etc/live
+        target: /etc/nginx/cert
+        read_only: true
+        volume:
+          nocopy: true
       - type: bind
         source: ./nginx/conf.d
         target: /etc/nginx/conf.d

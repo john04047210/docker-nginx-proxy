@@ -32,6 +32,12 @@ services:
         volume:
           nocopy: true
       - type: bind
+        source: /data/cert/letsencrypt/data
+        target: /data/letsencrypt
+        read_only: true
+        volume:
+          nocopy: true
+      - type: bind
         source: ./nginx/conf.d
         target: /etc/nginx/conf.d
         read_only: true

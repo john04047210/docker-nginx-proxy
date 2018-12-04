@@ -2,7 +2,7 @@ version: "3.2"
 
 services:
   proxy:
-    image: nginx:1.14.1-alpine
+    build: ./
     container_name: nginx-proxy
     restart: always
     networks:
@@ -21,7 +21,7 @@ services:
           nocopy: true
       - type: bind
         source: /data/cert/letsencrypt/etc/live
-        target: /etc/nginx/cert
+        target: /etc/nginx/certs
         read_only: true
         volume:
           nocopy: true

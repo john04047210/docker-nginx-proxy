@@ -20,8 +20,14 @@ services:
         volume:
           nocopy: true
       - type: bind
-        source: /data/cert/letsencrypt/etc/live
-        target: /etc/nginx/certs
+        source: /data/cert/letsencrypt/etc/live/www.shilikaif.com/fullchain.pem
+        target: /etc/nginx/certs/www.shilikaif.com/fullchain.pem
+        read_only: true
+        volume:
+          nocopy: true
+      - type: bind
+        source: /data/cert/letsencrypt/etc/live/www.shilikaif.com/privkey.pem
+        target: /etc/nginx/certs/www.shilikaif.com/privkey.pem
         read_only: true
         volume:
           nocopy: true
